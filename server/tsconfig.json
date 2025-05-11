@@ -42,6 +42,7 @@
       "@UseCases/*": ["src/Application/UseCases/*"],
       "@DTOs/*": ["src/Application/DTOs/*"],
 
+      "@Security/*": ["src/Domain/Security/*"],
       "@Models/*": ["src/Domain/Models/*"],
     },
   },
