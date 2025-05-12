@@ -1,13 +1,13 @@
 import { Context } from "@Database/Core/Context";
 import { Seeder } from "@Database/Seeders/Seeder";
 
-import { UserSeeder } from "@Database/Seeders/UserSeeder";
 import { RoleSeeder } from "@Database/Seeders/RoleSeeder";
 import { AdminSeeder } from "@Database/Seeders/AdminSeeder";
+import { PermissionSeeder } from "@Database/Seeders/PermissionSeeder";
 
-const userSeeder = new UserSeeder(Context);
 const roleSeeder = new RoleSeeder(Context);
 const adminSeeder = new AdminSeeder(Context);
+const permissionSeeder = new PermissionSeeder(Context);
 
 const SeedRunner = async (seeders: Seeder[]) => {
   for (const seeder of seeders) {
@@ -18,5 +18,5 @@ const SeedRunner = async (seeders: Seeder[]) => {
 };
 
 await SeedRunner([
-  adminSeeder, roleSeeder,
+  adminSeeder, roleSeeder, permissionSeeder,
 ]);
