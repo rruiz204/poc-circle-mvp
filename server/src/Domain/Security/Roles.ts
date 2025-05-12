@@ -1,9 +1,4 @@
-interface Role {
-  name: string;
-  description: string;
-};
-
-export const Roles: Role[] = [
+export const Roles = [
   {
     name: "admin",
     description: "overall administrator with full system control.",
