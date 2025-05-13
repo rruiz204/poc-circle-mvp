@@ -23,7 +23,7 @@ export class SimpleRegisterUseCase implements UseCase<SimpleRegisterCommand, Aut
     const hashed = await BcryptService.hash(validated.password);
     const created = await this.uow.user.create({ ...validated, password: hashed });
 
-    const token = await JwtService.sign({ id: created.id });
+    const token = await JwtService.sign({ id: created.id, expi: "1h" });
     return { type: "Bearer", token: token };
   };
 };
