@@ -44,6 +44,7 @@
 
       "@Security/*": ["src/Domain/Security/*"],
       "@Models/*": ["src/Domain/Models/*"],
+      "@Enums/*": ["src/Domain/Enums/*"],
     },
   },
   "include": [
