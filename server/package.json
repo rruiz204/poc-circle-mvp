@@ -8,7 +8,8 @@
     "prisma:studio": "prisma studio",
     "prisma:migrate": "prisma migrate dev",
     "test:unit": "vitest",
-    "test:unit:coverage": "vitest --coverage"
+    "test:unit:coverage": "vitest --coverage",
+    "command:sync:scopes": "bun ./src/Infrastructure/Commands/SyncScopes.ts"
   },
   "prisma": {
     "seed": "bun ./src/Infrastructure/Database/Core/SeedRunner.ts"
