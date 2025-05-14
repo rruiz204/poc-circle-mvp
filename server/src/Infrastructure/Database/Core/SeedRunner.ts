@@ -1,4 +1,4 @@
-import { Context } from "@Database/Core/Context";
+import { Context } from "@Database/Common/Context";
 import { Seeder } from "@Database/Seeders/Seeder";
 
 import { RoleSeeder } from "@Database/Seeders/RoleSeeder";

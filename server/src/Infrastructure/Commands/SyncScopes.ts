@@ -1,6 +1,6 @@
 import { RBAC } from "@Security/RBAC";
 import type { Command } from "./Command";
-import { Context } from "@Database/Core/Context";
+import { Context } from "@Database/Common/Context";
 import { Inversify } from "@Containers/Inversify";
 import { UnitOfWork } from "@Database/Core/UnitOfWork";
 

@@ -1,6 +1,6 @@
 import { ContainerModule } from "inversify";
 
-import { Context } from "@Database/Core/Context";
+import { Context } from "@Database/Common/Context";
 import { UnitOfWork } from "@Database/Core/UnitOfWork";
 
 export const Infrastructure = new ContainerModule((opts) => {
