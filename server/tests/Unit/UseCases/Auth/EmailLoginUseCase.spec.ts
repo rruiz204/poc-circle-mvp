@@ -3,7 +3,7 @@ import { describe, expect, it, vi, beforeEach } from "vitest";
 import type { User } from "@Models/User";
 
 import { Inversify } from "@Containers/Inversify";
-import { UnitOfWork } from "@Database/Core/UnitOfWork";
+import { UnitOfWork } from "@Database/Common/UnitOfWork";
 import { JwtService } from "@Services/Tokens/JwtService";
 import { LogicException } from "@Exceptions/LogicException";
 import { UserFactory } from "@Database/Factories/UserFactory";

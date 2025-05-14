@@ -25,17 +25,28 @@ model User {
 }
 
 model Role {
-  id          Int      @id @default(autoincrement())
-  name        String   @unique
+  id          Int         @id @default(autoincrement())
+  name        String      @unique
   description String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  scopes      RoleScope[]
 }
 
 model Scope {
-  id          Int      @id @default(autoincrement())
-  name        String   @unique
+  id          Int         @id @default(autoincrement())
+  name        String      @unique
   description String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  roles       RoleScope[]
+}
+
+model RoleScope {
+  roleId  Int
+  scopeId Int
+  Role    Role  @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  Scope   Scope @relation(fields: [scopeId], references: [id], onDelete: Cascade)
+
+  @@id([roleId, scopeId])
 }

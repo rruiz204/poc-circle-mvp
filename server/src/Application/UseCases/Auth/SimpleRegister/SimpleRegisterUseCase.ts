@@ -3,7 +3,7 @@ import type { UseCase } from "@UseCases/UseCase";
 import type { SimpleRegisterCommand } from "./SimpleRegisterCommand";
 
 import { inject, injectable } from "inversify";
-import { UnitOfWork } from "@Database/Core/UnitOfWork";
+import { UnitOfWork } from "@Database/Common/UnitOfWork";
 import { SimpleRegisterSchema } from "./SimpleRegisterSchema";
 
 import { JwtService } from "@Services/Tokens/JwtService";

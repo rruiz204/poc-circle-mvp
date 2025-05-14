@@ -1,7 +1,7 @@
 import type { Scope } from "@Models/Scope";
 import { PrismaClient } from "generated/prisma";
 
-export class PermissionRepository {
+export class ScopeRepository {
   constructor(private prisma: PrismaClient) {};
 
   public async list(): Promise<Scope.Records> {
