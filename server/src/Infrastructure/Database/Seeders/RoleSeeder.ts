@@ -1,7 +1,7 @@
 import { Seeder } from "./Seeder";
-import { Roles } from "@Database/Data/Roles";
 import { PrismaClient } from "generated/prisma";
 import type { Role as Model } from "@Models/Role";
+import { Roles } from "@Database/Common/Data/Roles";
 
 export class RoleSeeder extends Seeder {
   constructor(context: PrismaClient) {

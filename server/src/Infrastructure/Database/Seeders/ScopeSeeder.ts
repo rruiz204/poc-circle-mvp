@@ -1,7 +1,7 @@
 import { Seeder } from "./Seeder";
-import { Scopes } from "@Database/Data/Scopes";
 import { PrismaClient } from "generated/prisma";
 import type { Scope as Model } from "@Models/Scope";
+import { Scopes } from "@Database/Common/Data/Scopes";
 
 export class ScopeSeeder extends Seeder {
   constructor(context: PrismaClient) {
