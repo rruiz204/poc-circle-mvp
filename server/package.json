@@ -12,7 +12,7 @@
     "command:sync:scopes": "bun ./src/Infrastructure/Commands/SyncScopes.ts"
   },
   "prisma": {
-    "seed": "bun ./src/Infrastructure/Database/Core/SeedRunner.ts"
+    "seed": "bun ./src/Infrastructure/Database/Common/SeedRunner.ts"
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.5",
