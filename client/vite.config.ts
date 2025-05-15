@@ -7,7 +7,9 @@ export default defineConfig({
   plugins: [vue(), tailwindcss()],
   resolve: {
     alias: [
+      { find: "@Layouts", replacement: "/src/Components/Layouts" },
       { find: "@Common", replacement: "/src/Components/Common" },
+
       { find: "@Services", replacement: "/src/Core/Services" },
       { find: "@Helpers", replacement: "/src/Core/Helpers" },
       { find: "@Schemas", replacement: "/src/Core/Schemas" },
