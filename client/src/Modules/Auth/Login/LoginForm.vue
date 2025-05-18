@@ -1,38 +1,43 @@
 <script lang="ts" setup>
 import Button from "primevue/button";
-import Message from "primevue/message";
-import Password from "primevue/password";
-import Divider from "primevue/divider";
 
 import { InputText } from "primevue";
+import Password from "primevue/password";
+import IconField from "primevue/iconfield";
+import InputIcon from "primevue/inputicon";
+
 import { Form } from "@primevue/forms";
+import FormField from "@Common/Atoms/FormField.vue";
 import { LoginResolver } from "./LoginSchema";
 </script>
 
 <template>
   <div class="w-full max-w-md p-4 flex flex-col gap-3">
-
     <Form v-slot="$form" :resolver="LoginResolver" class="flex flex-col gap-4">
-      <div>
-        <InputText name="email" type="email" placeholder="Email" fluid class="mb-1" />
-        <Message v-if="$form.email?.invalid" severity="error" size="small" variant="simple">
-          {{ $form.email.error?.message }}
-        </Message>
+
+      <FormField name="email" label="Email" :form="$form.email">
+        <IconField>
+          <InputText id="email" name="email" type="email" placeholder="example@example.com" fluid />
+          <InputIcon class="pi pi-envelope" />
+        </IconField>
+      </FormField>
+
+      <FormField name="password" label="Password" :form="$form.password">
+        <Password id="password" name="password" :feedback="false" placeholder="p4ssw0rd" fluid toggle-mask />
+      </FormField>
+
+      <div class="flex justify-end">
+        <span class="text-xs text-emerald-400 font-semibold">Forgot password?</span>
       </div>
 
-      <div>
-        <Password name="password" :feedback="false" placeholder="Password" fluid toggle-mask class="mb-1" />
-        <Message v-if="$form.password?.invalid" severity="error" size="small" variant="simple">
-          {{ $form.password.error?.message }}
-        </Message>
-      </div>
-
-      <Button type="submit" severity="secondary" fluid>
+      <Button type="submit" fluid>
         <p class="font-semibold">Login</p>
       </Button>
     </Form>
 
-    <Divider />
+    <div class="flex items-center justify-center">
+      <span class=" px-2 text-xs text-zinc-500">or continue with</span>
+    </div>
 
     <div class="flex gap-3">
       <Button type="button" severity="secondary" fluid>
