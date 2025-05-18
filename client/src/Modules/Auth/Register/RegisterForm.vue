@@ -1,42 +1,42 @@
 <script lang="ts" setup>
 import Button from "primevue/button";
-import Message from "primevue/message";
-import Password from "primevue/password";
 
 import { InputText } from "primevue";
+import Password from "primevue/password";
+import IconField from "primevue/iconfield";
+import InputIcon from "primevue/inputicon";
+
 import { Form } from "@primevue/forms";
+import FormField from "@Common/Atoms/FormField.vue";
 import { RegisterResolver } from "./RegisterSchema";
 </script>
 
 <template>
-  <div class="w-full max-w-md p-4">
-
+  <div class="w-full max-w-md p-4 flex flex-col gap-3">
     <Form v-slot="$form" :resolver="RegisterResolver" class="flex flex-col gap-4">
-      <div>
-        <InputText name="username" type="text" placeholder="Username" fluid class="mb-1" />
-        <Message v-if="$form.username?.invalid" severity="error" size="small" variant="simple">
-          {{ $form.username.error?.message }}
-        </Message>
-      </div>
 
-      <div>
-        <InputText name="email" type="email" placeholder="Email" fluid class="mb-1" />
-        <Message v-if="$form.email?.invalid" severity="error" size="small" variant="simple">
-          {{ $form.email.error?.message }}
-        </Message>
-      </div>
+      <FormField name="username" label="Username" :form="$form.username">
+        <IconField>
+          <InputText id="username" name="username" type="text" placeholder="R3x" fluid />
+          <InputIcon class="pi pi-user" />
+        </IconField>
+      </FormField>
 
-      <div>
-        <Password name="password" :feedback="false" placeholder="Password" fluid toggle-mask class="mb-1" />
-        <Message v-if="$form.password?.invalid" severity="error" size="small" variant="simple">
-          {{ $form.password.error?.message }}
-        </Message>
-      </div>
+      <FormField name="email" label="Email" :form="$form.email">
+        <IconField>
+          <InputText id="email" name="email" type="email" placeholder="name@example.com" fluid />
+          <InputIcon class="pi pi-envelope" />
+        </IconField>
+      </FormField>
 
-      <Button type="submit" severity="secondary" fluid>
+      <FormField name="password" label="Password" :form="$form.password">
+        <Password id="password" name="password" :feedback="false" placeholder="hello1234" fluid toggle-mask />
+      </FormField>
+
+      <Button type="submit" fluid>
         <p class="font-semibold">Register</p>
       </Button>
-    </Form>
 
+    </Form>
   </div>
 </template>
