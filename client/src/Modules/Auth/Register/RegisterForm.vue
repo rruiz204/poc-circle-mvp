@@ -1,42 +1,50 @@
 <script lang="ts" setup>
 import Button from "primevue/button";
-import Message from "primevue/message";
+import Checkbox from "primevue/checkbox";
 import Password from "primevue/password";
+import IconField from "primevue/iconfield";
+import InputIcon from "primevue/inputicon";
+import FormField from "@Common/Atoms/FormField.vue";
 
+import { ref } from "vue";
 import { InputText } from "primevue";
 import { Form } from "@primevue/forms";
 import { RegisterResolver } from "./RegisterSchema";
+
+const checked = ref<boolean>(false);
 </script>
 
 <template>
-  <div class="w-full max-w-md p-4">
-
+  <div class="w-full max-w-md p-4 flex flex-col gap-3">
     <Form v-slot="$form" :resolver="RegisterResolver" class="flex flex-col gap-4">
-      <div>
-        <InputText name="username" type="text" placeholder="Username" fluid class="mb-1" />
-        <Message v-if="$form.username?.invalid" severity="error" size="small" variant="simple">
-          {{ $form.username.error?.message }}
-        </Message>
+
+      <FormField name="username" label="Username" :form="$form.username">
+        <IconField>
+          <InputText id="username" name="username" type="text" placeholder="R3x" fluid />
+          <InputIcon class="pi pi-user" />
+        </IconField>
+      </FormField>
+
+      <FormField name="email" label="Email" :form="$form.email">
+        <IconField>
+          <InputText id="email" name="email" type="email" placeholder="name@example.com" fluid />
+          <InputIcon class="pi pi-envelope" />
+        </IconField>
+      </FormField>
+
+      <FormField name="password" label="Password" :form="$form.password">
+        <Password id="password" name="password" :feedback="false" placeholder="hello1234" fluid toggle-mask />
+      </FormField>
+
+      <div class="flex items-center gap-2 py-2">
+        <Checkbox v-model="checked" binary size="small" input-id="terms" name="terms" />
+        <label for="terms" class="text-zinc-400 text-xs font-semibold">I agree to the terms of service and privacy policy</label>
       </div>
 
-      <div>
-        <InputText name="email" type="email" placeholder="Email" fluid class="mb-1" />
-        <Message v-if="$form.email?.invalid" severity="error" size="small" variant="simple">
-          {{ $form.email.error?.message }}
-        </Message>
-      </div>
-
-      <div>
-        <Password name="password" :feedback="false" placeholder="Password" fluid toggle-mask class="mb-1" />
-        <Message v-if="$form.password?.invalid" severity="error" size="small" variant="simple">
-          {{ $form.password.error?.message }}
-        </Message>
-      </div>
-
-      <Button type="submit" severity="secondary" fluid>
+      <Button type="submit" fluid>
         <p class="font-semibold">Register</p>
       </Button>
-    </Form>
 
+    </Form>
   </div>
 </template>

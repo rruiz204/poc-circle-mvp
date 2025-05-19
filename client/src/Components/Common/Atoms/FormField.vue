@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import Message from "primevue/message";
+import { FormatHelper } from "@Helpers/FormatHelper";
 
 defineProps<{
   form?: any;
@@ -13,7 +14,7 @@ defineProps<{
     <label :for="name" class="text-zinc-400">{{ label }}</label>
     <slot></slot>
     <Message v-if="form?.invalid" severity="error" size="small" variant="simple">
-      {{ form.error?.message }}
+      {{ form.error?.message && FormatHelper.capitalize(form.error.message) }}
     </Message>
   </div>
 </template>
