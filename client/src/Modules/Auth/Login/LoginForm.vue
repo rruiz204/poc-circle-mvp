@@ -1,13 +1,11 @@
 <script lang="ts" setup>
 import Button from "primevue/button";
-
-import { InputText } from "primevue";
 import Password from "primevue/password";
 import IconField from "primevue/iconfield";
 import InputIcon from "primevue/inputicon";
+import FormField from "@Common/Atoms/FormField.vue";
 
 import { Form } from "@primevue/forms";
-import FormField from "@Common/Atoms/FormField.vue";
 import { LoginResolver } from "./LoginSchema";
 </script>
 
