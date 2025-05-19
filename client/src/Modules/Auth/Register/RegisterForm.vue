@@ -1,14 +1,17 @@
 <script lang="ts" setup>
 import Button from "primevue/button";
-
-import { InputText } from "primevue";
+import Checkbox from "primevue/checkbox";
 import Password from "primevue/password";
 import IconField from "primevue/iconfield";
 import InputIcon from "primevue/inputicon";
-
-import { Form } from "@primevue/forms";
 import FormField from "@Common/Atoms/FormField.vue";
+
+import { ref } from "vue";
+import { InputText } from "primevue";
+import { Form } from "@primevue/forms";
 import { RegisterResolver } from "./RegisterSchema";
+
+const checked = ref<boolean>(false);
 </script>
 
 <template>
@@ -32,6 +35,11 @@ import { RegisterResolver } from "./RegisterSchema";
       <FormField name="password" label="Password" :form="$form.password">
         <Password id="password" name="password" :feedback="false" placeholder="hello1234" fluid toggle-mask />
       </FormField>
+
+      <div class="flex items-center gap-2 py-2">
+        <Checkbox v-model="checked" binary size="small" input-id="terms" name="terms" />
+        <label for="terms" class="text-zinc-400 text-xs font-semibold">I agree to the terms of service and privacy policy</label>
+      </div>
 
       <Button type="submit" fluid>
         <p class="font-semibold">Register</p>
