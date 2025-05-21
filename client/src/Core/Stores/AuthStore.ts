@@ -1,7 +1,6 @@
-import { reactive } from "vue";
 import { defineStore } from "pinia";
+import { useKhaos } from "@Hooks/useKhaos";
 import type { Token } from "@Models/Token";
-import type { Fetching } from "@Models/Fetching";
 
 import { KhaosBuilder } from "@Services/Khaos/KhaosBuilder";
 import { KhaosService } from "@Services/Khaos/KhaosService";
@@ -10,43 +9,28 @@ import type { LoginCommand } from "@Modules/Auth/Login/LoginSchema";
 import type { RegisterCommand } from "@Modules/Auth/Register/RegisterSchema";
 
 export const useAuthStore = defineStore("auth-store", () => {
+  const { state: loginState, wrapper: loginWrapper } = useKhaos();
 
-  const loginState = reactive<Fetching>({
-    loading: false, error: null,
-  });
-
-  const registerState = reactive<Fetching>({
-    loading: false, error: null,
-  });
-
-  const emailLogin = async (command: LoginCommand): Promise<void> => {
-    loginState.loading = true;
-    loginState.error = null;
-
+  const loginAction = async (command: LoginCommand) => {
     const builder = new KhaosBuilder("/auth/login", "POST").withBody(command);
-    const response = await KhaosService.invoke<Token>(builder);
-
-    if (response.error) loginState.error = response.error.message;
-    else console.log(response.data);
-    loginState.loading = false;
+    const service = async () => await KhaosService.invoke<Token>(builder);
+    const token = await loginWrapper<Token>(service);
+    console.log(token);
   };
 
-  const emailRegister = async (command: RegisterCommand): Promise<void> => {
-    registerState.loading = true;
-    registerState.error = null;
+  const { state: registerState, wrapper: registerWrapper } = useKhaos();
 
+  const registerAction = async (command: RegisterCommand) => {
     const builder = new KhaosBuilder("/auth/register", "POST").withBody(command);
-    const response = await KhaosService.invoke<Token>(builder);
-
-    if (response.error) registerState.error = response.error.message;
-    else console.log(response.data);
-    registerState.loading = false;
+    const service = async () => await KhaosService.invoke<Token>(builder);
+    const token = await registerWrapper<Token>(service);
+    console.log(token);
   };
 
   return {
     loginState,
-    emailLogin,
+    loginAction,
     registerState,
-    emailRegister,
+    registerAction,
   };
 });
