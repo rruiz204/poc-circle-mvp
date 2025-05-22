@@ -1,4 +1,6 @@
-export interface Token {
-  type: string;
-  token: string;
+export namespace Token {
+  export interface Data {
+    type: string;
+    token: string;
+  };
 };
