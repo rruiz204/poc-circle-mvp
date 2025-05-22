@@ -7,3 +7,4 @@ const LoginSchema = yup.object({
 });
 
 export const LoginResolver = yupResolver(LoginSchema);
+export type LoginCommand = yup.InferType<typeof LoginSchema>;
