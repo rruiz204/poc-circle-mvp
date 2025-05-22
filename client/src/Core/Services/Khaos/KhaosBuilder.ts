@@ -1,4 +1,11 @@
-import type { HttpMethod, IKhaosBuilder } from "./KhaosTypes";
+type HttpMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
+
+export interface IKhaosBuilder {
+  endpoint: string;
+  options: RequestInit;
+  withAuthToken(): this;
+  withBody(body: BodyInit): this;
+};
 
 export class KhaosBuilder implements IKhaosBuilder {
   public endpoint: string = import.meta.env.VITE_BASE_URL;

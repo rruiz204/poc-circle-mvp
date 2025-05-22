@@ -1,6 +1,5 @@
 import { reactive } from "vue";
-import type { KhaosResponse } from "@Services/Khaos/KhaosTypes";
-type Service<Model> = () => Promise<KhaosResponse<Model>>;
+import type { IKhaosService } from "@Services/Khaos/KhaosService";
 
 interface State {
   loading: boolean;
@@ -12,11 +11,11 @@ export function useKhaos() {
     loading: false, error: null,
   });
 
-  const wrapper = async <Model>(service: Service<Model>) => {
+  const wrapper = async <Data>(service: IKhaosService) => {
     state.loading = true;
     state.error = null;
 
-    const response = await service();
+    const response = await service.invoke<Data>();
     
     if (response.error) {
       state.error = response.error.message;
