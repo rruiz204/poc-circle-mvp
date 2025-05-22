@@ -6,7 +6,7 @@ import InputIcon from "primevue/inputicon";
 import FormField from "@Common/Atoms/FormField.vue";
 
 import { InputText } from "primevue";
-import { useAuthStore } from "@Stores/AuthStore";
+import { useAuthStore } from "@Stores/useAuthStore";
 import { Form, type FormSubmitEvent } from "@primevue/forms";
 import { LoginResolver, type LoginCommand } from "./LoginSchema";
 

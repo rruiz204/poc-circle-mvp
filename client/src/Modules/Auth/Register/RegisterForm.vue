@@ -8,7 +8,7 @@ import FormField from "@Common/Atoms/FormField.vue";
 
 import { ref } from "vue";
 import { InputText } from "primevue";
-import { useAuthStore } from "@Stores/AuthStore";
+import { useAuthStore } from "@Stores/useAuthStore";
 import { Form, type FormSubmitEvent } from "@primevue/forms";
 import { RegisterResolver, type RegisterCommand } from "./RegisterSchema";
 
