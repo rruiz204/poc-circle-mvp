@@ -17,9 +17,9 @@
 
       "@Services/*": ["src/Core/Services/*"],
       "@Helpers/*": ["src/Core/Helpers/*"],
-      "@Schemas/*": ["src/Core/Schemas/*"],
-      "@Routes/*": ["src/Core/Routes/*"],
       "@Stores/*": ["src/Core/Stores/*"],
+      "@Routes/*": ["src/Core/Routes/*"],
+      "@Models/*": ["src/Core/Models/*"],
       "@Hooks/*": ["src/Core/Hooks/*"],
 
       "@Modules/*": ["src/Modules/*"],

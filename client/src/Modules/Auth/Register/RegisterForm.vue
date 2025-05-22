@@ -8,15 +8,22 @@ import FormField from "@Common/Atoms/FormField.vue";
 
 import { ref } from "vue";
 import { InputText } from "primevue";
-import { Form } from "@primevue/forms";
-import { RegisterResolver } from "./RegisterSchema";
+import { useAuthStore } from "@Stores/AuthStore";
+import { Form, type FormSubmitEvent } from "@primevue/forms";
+import { RegisterResolver, type RegisterCommand } from "./RegisterSchema";
 
 const checked = ref<boolean>(false);
+
+const authStore = useAuthStore();
+
+const onSubmit = async (event: FormSubmitEvent): Promise<void> => {
+  await authStore.registerAction(event.values as RegisterCommand);
+};
 </script>
 
 <template>
   <div class="w-full max-w-md p-4 flex flex-col gap-3">
-    <Form v-slot="$form" :resolver="RegisterResolver" class="flex flex-col gap-4">
+    <Form v-slot="$form" :resolver="RegisterResolver" @submit="onSubmit" class="flex flex-col gap-4">
 
       <FormField name="username" label="Username" :form="$form.username">
         <IconField>

@@ -8,3 +8,4 @@ const RegisterSchema = yup.object({
 });
 
 export const RegisterResolver = yupResolver(RegisterSchema);
+export type RegisterCommand = yup.InferType<typeof RegisterSchema>;
