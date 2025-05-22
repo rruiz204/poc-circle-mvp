@@ -5,6 +5,7 @@ import IconField from "primevue/iconfield";
 import InputIcon from "primevue/inputicon";
 import FormField from "@Common/Atoms/FormField.vue";
 
+import { InputText } from "primevue";
 import { useAuthStore } from "@Stores/AuthStore";
 import { Form, type FormSubmitEvent } from "@primevue/forms";
 import { LoginResolver, type LoginCommand } from "./LoginSchema";
@@ -12,7 +13,7 @@ import { LoginResolver, type LoginCommand } from "./LoginSchema";
 const authStore = useAuthStore();
 
 const onSubmit = async (event: FormSubmitEvent): Promise<void> => {
-  await authStore.emailLogin(event.values as LoginCommand);
+  await authStore.loginAction(event.values as LoginCommand);
 };
 </script>
 
@@ -22,13 +23,13 @@ const onSubmit = async (event: FormSubmitEvent): Promise<void> => {
 
       <FormField name="email" label="Email" :form="$form.email">
         <IconField>
-          <InputText id="email" name="email" type="email" placeholder="example@example.com" fluid />
+          <InputText id="email" name="email" type="email" placeholder="name@example.com" fluid />
           <InputIcon class="pi pi-envelope" />
         </IconField>
       </FormField>
 
       <FormField name="password" label="Password" :form="$form.password">
-        <Password id="password" name="password" :feedback="false" placeholder="p4ssw0rd" fluid toggle-mask />
+        <Password id="password" name="password" :feedback="false" placeholder="hello1234" fluid toggle-mask />
       </FormField>
 
       <div class="flex justify-end">

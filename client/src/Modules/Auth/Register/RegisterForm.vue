@@ -17,7 +17,7 @@ const checked = ref<boolean>(false);
 const authStore = useAuthStore();
 
 const onSubmit = async (event: FormSubmitEvent): Promise<void> => {
-  await authStore.emailRegister(event.values as RegisterCommand);
+  await authStore.registerAction(event.values as RegisterCommand);
 };
 </script>
 
