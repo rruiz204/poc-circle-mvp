@@ -1,20 +1,11 @@
-import type { IKhaosBuilder } from "./KhaosBuilder";
-
-export interface KhaosError {
-  message: string;
-};
-
-export interface KhaosResponse<KhaosModel> {
-  data?: KhaosModel;
-  error?: KhaosError;
-};
+import type { KhaosResponse, IKhaosBuilder } from "./KhaosTypes";
 
 export class KhaosService {
   public static async invoke<Model>(builder: IKhaosBuilder): Promise<KhaosResponse<Model>> {
     const response = await fetch(builder.endpoint, builder.options);
-    const paylaod = await response.json() as KhaosResponse<Model>;
+    const paylaod = await response.json();
 
-    if (response.ok) return { data: paylaod.data };
-    return { error: paylaod.error };
+    if (response.ok) return { data: paylaod as Model };
+    return { error: { message: paylaod.message } };
   };
 };
