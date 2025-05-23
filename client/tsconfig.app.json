@@ -15,12 +15,11 @@
       "@Layouts/*": ["src/Components/Layouts/*"],
       "@Common/*": ["src/Components/Common/*"],
 
-      "@Services/*": ["src/Core/Services/*"],
-      "@Helpers/*": ["src/Core/Helpers/*"],
-      "@Stores/*": ["src/Core/Stores/*"],
-      "@Routes/*": ["src/Core/Routes/*"],
-      "@Models/*": ["src/Core/Models/*"],
-      "@Hooks/*": ["src/Core/Hooks/*"],
+      "@Services/*": ["src/Services/*"],
+      "@Helpers/*": ["src/Helpers/*"],
+      "@Stores/*": ["src/Stores/*"],
+      "@Routes/*": ["src/Routes/*"],
+      "@Models/*": ["src/Models/*"],
 
       "@Modules/*": ["src/Modules/*"],
     }

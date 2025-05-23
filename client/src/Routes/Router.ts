@@ -1,14 +1,13 @@
-import { createRouter, createWebHistory, type RouteRecordRaw } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 
 import { AuthRoutes } from "@Modules/Auth/AuthRoutes";
 import { LandingRoutes } from "@Modules/Landing/LandingRoutes";
 
-const routes: RouteRecordRaw[] = [
+const routes = [
   ...AuthRoutes,
   ...LandingRoutes,
 ];
 
 export const Router = createRouter({
-  history: createWebHistory(),
-  routes: routes,
+  history: createWebHistory(), routes
 });
