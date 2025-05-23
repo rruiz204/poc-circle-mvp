@@ -6,14 +6,14 @@ import InputIcon from "primevue/inputicon";
 import FormField from "@Common/Atoms/FormField.vue";
 
 import { InputText } from "primevue";
-import { useAuthStore } from "@Stores/AuthStore";
+import { useAuthStore } from "@Stores/useAuthStore";
 import { Form, type FormSubmitEvent } from "@primevue/forms";
 import { LoginResolver, type LoginCommand } from "./LoginSchema";
 
 const authStore = useAuthStore();
 
-const onSubmit = async (event: FormSubmitEvent): Promise<void> => {
-  await authStore.loginAction(event.values as LoginCommand);
+const onSubmit = (event: FormSubmitEvent): void => {
+  authStore.login.mutate(event.values as LoginCommand);
 };
 </script>
 
@@ -56,6 +56,6 @@ const onSubmit = async (event: FormSubmitEvent): Promise<void> => {
         <p class="font-semibold">GitHub</p>
       </Button>
     </div>
-
+    
   </div>
 </template>
