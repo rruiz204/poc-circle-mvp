@@ -17,6 +17,7 @@ export default defineConfig({
       { find: "@Models", replacement: "/src/Models" },
       
       { find: "@Modules", replacement: "/src/Modules" },
+      { find: "@Assets", replacement: "/src/Assets" },
     ],
   },
 })
