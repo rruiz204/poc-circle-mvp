@@ -1,9 +1,11 @@
 <script lang="ts" setup>
-import LandingHero from './Components/LandingHero.vue';
-import LandingHeader from './Components/LandingHeader.vue';
-import LandingFeatures from './Components/LandingFeatures.vue';
-import LandingCircleFlow from './Components/LandingCircleFlow.vue';
-import LandingTestimonials from './Components/LandingTestimonials.vue';
+import LandingCTA from "./Components/LandingCTA.vue";
+import LandingHero from "./Components/LandingHero.vue";
+import LandingHeader from "./Components/LandingHeader.vue";
+import LandingPricing from "./Components/LandingPricing.vue";
+import LandingFeatures from "./Components/LandingFeatures.vue";
+import LandingCircleFlow from "./Components/LandingCircleFlow.vue";
+import LandingTestimonials from "./Components/LandingTestimonials.vue";
 </script>
 
 <template>
@@ -13,5 +15,7 @@ import LandingTestimonials from './Components/LandingTestimonials.vue';
     <LandingFeatures />
     <LandingCircleFlow />
     <LandingTestimonials />
+    <LandingPricing />
+    <LandingCTA />
   </div>
 </template>
