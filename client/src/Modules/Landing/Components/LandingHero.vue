@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-
+import ScrollIcon from "@Assets/Icons/scroll.svg";
 </script>
 
 <template>
-  <section class="relative overflow-hidden border-b border-zinc-800 py-36 md:py-44">
+  <section class="relative overflow-hidden border-b border-zinc-800 py-32 md:py-40">
     <div class="container relative z-10 mx-auto px-4 text-center">
 
       <div class="mx-auto max-w-3xl">
@@ -15,16 +15,7 @@
           <br> collaboration seamless and projects successful.
         </p>
 
-        <!-- <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button type="button" size="small">
-            <p class="font-semibold">Start for free</p>
-          </Button>
-          <Button type="button" size="small" severity="secondary">
-            <p class="font-semibold">Watch demo</p>
-          </Button>
-        </div> -->
-
-        <!-- <div className="mt-6 text-sm text-zinc-500">No credit card required • Free 14-day trial</div> -->
+        <img :src="ScrollIcon" alt="" height="40" width="40" class="mx-auto">
       </div>
 
     </div>
