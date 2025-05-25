@@ -1,11 +1,10 @@
 <script lang="ts" setup>
+import ZapIcon from "@Assets/Icons/zap.svg";
+import UsersIcon from "@Assets/Icons/users.svg";
 import LayersIcon from "@Assets/Icons/layers.svg";
 import ChartsIcon from "@Assets/Icons/charts.svg";
-import CalendarIcon from "@Assets/Icons/calendar.svg";
-import UsersIcon from "@Assets/Icons/users.svg";
-import ZapIcon from "@Assets/Icons/zap.svg";
 import MessageIcon from "@Assets/Icons/message.svg";
-
+import CalendarIcon from "@Assets/Icons/calendar.svg";
 import LandingFeatureCard from './LandingFeatureCard.vue';
 </script>
 
