@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import Circle from '@Common/Atoms/Circle.vue';
+import Button from "primevue/button";
+import Circle from "@Common/Atoms/Circle.vue";
 </script>
 
 <template>
@@ -15,6 +16,15 @@ import Circle from '@Common/Atoms/Circle.vue';
         <p class="mx-auto mb-8 max-w-2xl md:text-lg text-zinc-400">
           Join thousands of teams already using Circle to streamline their projects and boost productivity.
         </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Button type="button" size="large">
+            <p class="font-semibold text-base">Start your free trial</p>
+          </Button>
+          <Button type="button" size="large" severity="secondary">
+            <p class="font-semibold text-base">Schedule a demo</p>
+          </Button>
+        </div>
 
         <p class="mt-6 text-sm text-zinc-500">No credit card required • 14-day free trial • Cancel anytime</p>
       </div>
