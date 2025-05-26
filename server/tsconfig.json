@@ -46,10 +46,10 @@
       "@Middlewares/*": ["src/Presentation/Middlewares/*"],
       "@Routers/*": ["src/Presentation/Routers/*"],
 
+      "@Exceptions/*": ["src/Application/Exceptions/*"],
       "@UseCases/*": ["src/Application/UseCases/*"],
       "@DTOs/*": ["src/Application/DTOs/*"],
 
-      "@Exceptions/*": ["src/Domain/Exceptions/*"],
       "@Security/*": ["src/Domain/Security/*"],
       "@Models/*": ["src/Domain/Models/*"],
     },
