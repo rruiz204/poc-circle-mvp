@@ -38,13 +38,13 @@
       "@Middlewares/*": ["src/Presentation/Middlewares/*"],
       "@Routers/*": ["src/Presentation/Routers/*"],
 
-      "@Exceptions/*": ["src/Application/Exceptions/*"],
       "@UseCases/*": ["src/Application/UseCases/*"],
       "@DTOs/*": ["src/Application/DTOs/*"],
 
+      "@Interfaces/*": ["src/Domain/Interfaces/*"],
+      "@Exceptions/*": ["src/Domain/Exceptions/*"],
       "@Security/*": ["src/Domain/Security/*"],
       "@Models/*": ["src/Domain/Models/*"],
-      "@Enums/*": ["src/Domain/Enums/*"],
     },
   },
   "include": [
