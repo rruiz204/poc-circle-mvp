@@ -1,30 +1,30 @@
-import { Role } from "@Enums/Role";
-import { Scope } from "@Enums/Scope";
+import { Role } from "@Models/Role";
+import { Scope } from "@Models/Scope";
 
-export const RBAC: Record<string, Scope[]> = {
-  [Role.ADMIN]: [
-    Scope.ALL_TASKS,
+export const RBAC: Record<string, Scope.Enum[]> = {
+  [Role.Enum.ADMIN]: [
+    Scope.Enum.ALL_TASKS,
   ],
-  [Role.LEADER]: [
-    Scope.VIEW_TASKS,
-    Scope.EDIT_TASKS,
-    Scope.STATUS_TASKS,
-    Scope.ASSING_TASKS,
-    Scope.COMMENT_TASKS,
+  [Role.Enum.LEADER]: [
+    Scope.Enum.VIEW_TASKS,
+    Scope.Enum.EDIT_TASKS,
+    Scope.Enum.STATUS_TASKS,
+    Scope.Enum.ASSING_TASKS,
+    Scope.Enum.COMMENT_TASKS,
   ],
-  [Role.MANAGER]: [
-    Scope.VIEW_TASKS,
-    Scope.CREATE_TASKS,
-    Scope.EDIT_TASKS,
-    Scope.STATUS_TASKS,
-    Scope.COMMENT_TASKS,
+  [Role.Enum.MANAGER]: [
+    Scope.Enum.VIEW_TASKS,
+    Scope.Enum.CREATE_TASKS,
+    Scope.Enum.EDIT_TASKS,
+    Scope.Enum.STATUS_TASKS,
+    Scope.Enum.COMMENT_TASKS,
   ],
-  [Role.DEVELOPER]: [
-    Scope.VIEW_TASKS,
-    Scope.STATUS_TASKS,
-    Scope.COMMENT_TASKS,
+  [Role.Enum.DEVELOPER]: [
+    Scope.Enum.VIEW_TASKS,
+    Scope.Enum.STATUS_TASKS,
+    Scope.Enum.COMMENT_TASKS,
   ],
-  [Role.STAKEHOLDER]: [
-    Scope.VIEW_TASKS,
+  [Role.Enum.STAKEHOLDER]: [
+    Scope.Enum.VIEW_TASKS,
   ],
 };

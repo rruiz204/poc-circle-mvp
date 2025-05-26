@@ -12,4 +12,12 @@ export namespace Role {
 
   export type WhereParams = Prisma.RoleWhereInput;
   export type OrderParams = Prisma.RoleOrderByWithRelationInput;
+
+  export enum Enum {
+    ADMIN = "admin",
+    LEADER = "leader",
+    MANAGER = "manager",
+    DEVELOPER = "developer",
+    STAKEHOLDER = "stakeholder",
+  };
 };
