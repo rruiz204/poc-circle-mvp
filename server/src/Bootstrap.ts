@@ -5,7 +5,7 @@ import type { Express } from "express";
 import { PingRouter } from "@Routers/PingRouter";
 import { AuthRouter } from "@Routers/AuthRouter";
 
-import { ExceptionMiddleware } from "@Middlewares/ExceptionMiddleware";
+import { ExceptionMiddleware } from "@Middlewares/ExceptionMiddleware"
 
 export class Bootstrap {
   constructor(private app: Express) {};
