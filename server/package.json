@@ -9,7 +9,7 @@
     "prisma:migrate": "prisma migrate dev",
     "test:unit": "vitest",
     "test:unit:coverage": "vitest --coverage",
-    "command:sync:scopes": "bun ./src/Infrastructure/Commands/SyncScopes.ts"
+    "command:sync:rbac": "bun ./src/Infrastructure/Commands/SyncRBAC.ts"
   },
   "prisma": {
     "seed": "bun ./src/Infrastructure/Database/Common/SeedRunner.ts"
