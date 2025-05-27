@@ -1,7 +1,8 @@
 import type { Role } from "@Models/Role";
 import { PrismaClient } from "generated/prisma";
+import type { IRoleRepository } from "@Repositories/IRoleRepository";
 
-export class RoleRepository {
+export class RoleRepository implements IRoleRepository {
   constructor(private prisma: PrismaClient) {};
 
   public async list(): Promise<Role.Records> {

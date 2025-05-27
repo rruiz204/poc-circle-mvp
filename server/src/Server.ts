@@ -1,5 +1,5 @@
 import express from "express";
-import { Bootstrap } from "bootstrap";
+import { Bootstrap } from "./Bootstrap";
 import { ExpressConfig } from "@Configs/ExpressConfig";
 
 const app = express();

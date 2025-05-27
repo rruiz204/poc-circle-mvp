@@ -1,7 +1,8 @@
 import type { Scope } from "@Models/Scope";
 import { PrismaClient } from "generated/prisma";
+import type { IScopeRepository } from "@Repositories/IScopeRepository";
 
-export class ScopeRepository {
+export class ScopeRepository implements IScopeRepository {
   constructor(private prisma: PrismaClient) {};
 
   public async list(): Promise<Scope.Records> {

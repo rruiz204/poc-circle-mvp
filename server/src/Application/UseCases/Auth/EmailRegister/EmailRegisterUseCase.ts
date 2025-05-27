@@ -1,21 +1,21 @@
 import type { AuthDTO } from "@DTOs/AuthDTO";
 import type { UseCase } from "@UseCases/UseCase";
-import type { SimpleRegisterCommand } from "./SimpleRegisterCommand";
+import type { EmailRegisterCommand } from "./EmailRegisterCommand";
 
 import { inject, injectable } from "inversify";
 import { UnitOfWork } from "@Database/Common/UnitOfWork";
-import { SimpleRegisterSchema } from "./SimpleRegisterSchema";
+import { EmailRegisterSchema } from "./EmailRegisterSchema";
 
 import { JwtService } from "@Services/Tokens/JwtService";
 import { LogicException } from "@Exceptions/LogicException";
 import { BcryptService } from "@Services/Password/BcryptService";
 
 @injectable()
-export class SimpleRegisterUseCase implements UseCase<SimpleRegisterCommand, AuthDTO> {
+export class EmailRegisterUseCase implements UseCase<EmailRegisterCommand, AuthDTO> {
   constructor(@inject(UnitOfWork) private readonly uow: UnitOfWork) {};
 
-  public async execute(command: SimpleRegisterCommand): Promise<AuthDTO> {
-    let validated = await SimpleRegisterSchema.validate(command);
+  public async execute(command: EmailRegisterCommand): Promise<AuthDTO> {
+    let validated = await EmailRegisterSchema.validate(command);
 
     const existing = await this.uow.user.findByEmail(validated.email);
     if (existing) throw new LogicException.Redundancy("User already exists");
