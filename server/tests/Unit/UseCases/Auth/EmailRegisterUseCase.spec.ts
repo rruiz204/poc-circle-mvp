@@ -9,15 +9,15 @@ import { LogicException } from "@Exceptions/LogicException";
 import { UserFactory } from "@Database/Factories/UserFactory";
 import { BcryptService } from "@Services/Password/BcryptService";
 
-import { SimpleRegisterUseCase } from "@UseCases/Auth/SimpleRegister/SimpleRegisterUseCase";
-import type { SimpleRegisterCommand } from "@UseCases/Auth/SimpleRegister/SimpleRegisterCommand";
+import { EmailRegisterUseCase } from "@UseCases/Auth/EmailRegister/EmailRegisterUseCase";
+import type { EmailRegisterCommand } from "@UseCases/Auth/EmailRegister/EmailRegisterCommand";
 
 describe("simple register use case", () => {
   let user1: User.Entity;
-  let command: SimpleRegisterCommand;
+  let command: EmailRegisterCommand;
 
   const uow = Inversify.get(UnitOfWork);
-  const useCase = Inversify.get(SimpleRegisterUseCase);
+  const useCase = Inversify.get(EmailRegisterUseCase);
 
   beforeEach(async () => {
     user1 = await UserFactory.build({ id: 1 });
