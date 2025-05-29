@@ -1,0 +1,46 @@
+Table Users {
+  id serial [pk]
+  name varchar [not null]
+  email varchar [not null]
+  password varchar [not null]
+  created_at datetime [not null]
+  updated_at datetime [not null]
+}
+
+Table Shapes {
+  id serial [pk]
+  name varchar [not null]
+  owner_id integer [ref: > Users.id]
+  created_at datetime [not null]
+  updated_at datetime [not null]
+}
+
+Table Spaces {
+  id serial [pk]
+  name varchar [not null]
+  shape_id integer [ref: > Shapes.id]
+  created_at datetime [not null]
+  updated_at datetime [not null]
+}
+
+Table Tasks {
+  id serial [pk]
+  title varchar [not null]
+  status varchar [not null]
+  priority varchar [not null]
+  description varchar [not null]
+  due_date datetime [not null]
+  start_date datetime [not null]
+  space_id integer [ref: > Spaces.id]
+  created_at datetime [not null]
+  updated_at datetime [not null] 
+}
+
+Table Comments {
+  id serial [pk]
+  content varchar [not null]
+  task_id integer [ref: > Tasks.id]
+  user_id integer [ref: > Users.id]
+  created_at datetime [not null]
+  updated_at datetime [not null] 
+}
