@@ -1,12 +1,8 @@
-# Directories
 node_modules
+generated
+coverage
 
-# Files
 *.log
 *.md
 .git*
-
-# Secrets
-.env
-.env.prod
-.env.exmaple
+.env*

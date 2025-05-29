@@ -1,19 +1,19 @@
-version: "3"
-
 services:
   circle-api:
     image: circle-api
     container_name: circle-api
+    ports:
+      - "3000:3000"
+    networks:
+      - circle-network
+    env_file:
+      - ./server/.env.production
     build:
       context: ./server
       dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
     depends_on:
       circle-db:
         condition: service_healthy
-    env_file:
-      - ./server/.env.production
 
   circle-db:
     image: postgres:14
@@ -22,15 +22,21 @@ services:
       - "5432:5432"
     volumes:
       - circle-data:/var/lib/postgres/data
+    networks:
+      - circle-network
     environment:
       - POSTGRES_DB=circle
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=admin123
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      test: [ "CMD-SHELL", "pg_isready -U postgres -d circle" ]
       interval: 5s
       timeout: 2s
       retries: 20
 
 volumes:
   circle-data:
+
+networks:
+  circle-network:
+    driver: bridge

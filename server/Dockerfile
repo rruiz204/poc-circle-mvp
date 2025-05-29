@@ -10,6 +10,10 @@ RUN bun install
 
 COPY . .
 
+COPY scripts/entrypoint.sh /entrypoint.sh
+
+RUN chmod +x /entrypoint.sh
+
 EXPOSE 3000
 
-CMD ["sh", "-c", "bun run prisma:deploy && bun run prisma:generate && bun run prisma:seed && bun run prod"]
+CMD ["/entrypoint.sh"]
