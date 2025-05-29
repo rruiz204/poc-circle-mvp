@@ -7,6 +7,37 @@ Table Users {
   updated_at datetime [not null]
 }
 
+Table Roles {
+  id serial [pk]
+  name varchar [not null]
+  description varchar [not null]
+  created_at datetime [not null]
+  updated_at datetime [not null]
+}
+
+Table Scopes {
+  id serial [pk]
+  name varchar [not null]
+  description varchar [not null]
+  created_at datetime [not null]
+  updated_at datetime [not null]
+}
+
+Table RoleScopes {
+  scope_id integer [ref: > Scopes.id]
+  role_id integer [ref: > Roles.id]
+  created_at datetime [not null]
+  updated_at datetime [not null]
+}
+
+Table UserRoleShapes {
+  user_id integer [ref: > Users.id]
+  role_id integer [ref: > Roles.id]
+  shape_id integer [ref: > Shapes.id]
+  created_at datetime [not null]
+  updated_at datetime [not null]
+}
+
 Table Shapes {
   id serial [pk]
   name varchar [not null]
@@ -31,6 +62,7 @@ Table Tasks {
   description varchar [not null]
   due_date datetime [not null]
   start_date datetime [not null]
+  assignee_id integer [ref: > Users.id]
   space_id integer [ref: > Spaces.id]
   created_at datetime [not null]
   updated_at datetime [not null] 
