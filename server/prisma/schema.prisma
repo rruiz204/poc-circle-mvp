@@ -20,6 +20,7 @@ model User {
   email     String   @unique
   password  String
   active    Boolean  @default(true)
+  shapes    Shape[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -49,4 +50,23 @@ model RoleScope {
   Scope   Scope @relation(fields: [scopeId], references: [id], onDelete: Cascade)
 
   @@id([roleId, scopeId])
+}
+
+model Shape {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  owner     User     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  ownerId   Int
+  spaces    Space[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Space {
+  id        Int      @id @default(autoincrement())
+  name      String
+  shape     Shape    @relation(fields: [shapeId], references: [id], onDelete: Cascade)
+  shapeId   Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
