@@ -30,37 +30,4 @@ export class ScopeSeeder extends Seeder {
   };
 };
 
-const Scopes: Scope.CreateParams[] = [
-  {
-    name: Scope.Enum.ALL_TASKS,
-    description: "Grants full access to all task-related actions",
-  },
-  {
-    name: Scope.Enum.EDIT_TASKS,
-    description: "Allows the user to edit existing tasks information",
-  },
-  {
-    name: Scope.Enum.STATUS_TASKS,
-    description: "Allows the user to change the status of tasks",
-  },
-  {
-    name: Scope.Enum.ASSING_TASKS,
-    description: "Allows the user to assign tasks to team members",
-  },
-  {
-    name: Scope.Enum.CREATE_TASKS,
-    description: "Allows the user to create new tasks within projects",
-  },
-  {
-    name: Scope.Enum.DELETE_TASKS,
-    description: "Allows the user to delete existing tasks",
-  },
-  {
-    name: Scope.Enum.COMMENT_TASKS,
-    description: "Allows the user to comment on tasks",
-  },
-  {
-    name: Scope.Enum.VIEW_TASKS,
-    description: "Allows the user to view all tasks within projects",
-  },
-];
+const Scopes: Scope.CreateParams[] = [];

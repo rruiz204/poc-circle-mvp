@@ -16,7 +16,7 @@ export class SyncScopes implements Command {
 
       const scopes = RBAC[role];
       
-      for (const scope of scopes) {
+      /* for (const scope of scopes) {
         const existScope = await this.uow.scope.findByName(scope);
         if (!existScope) return;
 
@@ -26,7 +26,7 @@ export class SyncScopes implements Command {
             scopeId: existScope.id,
           },
         });
-      };
+      }; */
     };
 
     console.log("=== scopes synchronized ===");

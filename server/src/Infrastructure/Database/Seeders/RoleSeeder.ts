@@ -30,25 +30,4 @@ export class RoleSeeder extends Seeder {
   };
 };
 
-const Roles: Role.CreateParams[] = [
-  {
-    name: Role.Enum.ADMIN,
-    description: "Full access to all system features, including user and permission management",
-  },
-  {
-    name: Role.Enum.LEADER,
-    description: "Oversees team members and tasks within specific projects; can assign and update tasks",
-  },
-  {
-    name: Role.Enum.MANAGER,
-    description: "Manages entire projects, tasks, and team workflows; broader access than leader",
-  },
-  {
-    name: Role.Enum.DEVELOPER,
-    description: "Works on assigned tasks; can update status and add comments",
-  },
-  {
-    name: Role.Enum.STAKEHOLDER,
-    description: "Can view project progress and possibly comment; no editing permissions",
-  },
-];
+const Roles: Role.CreateParams[] = [];
