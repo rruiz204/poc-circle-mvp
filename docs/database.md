@@ -66,4 +66,14 @@ Table Messages {
   created_at datetime [not null]
   updated_at datetime [not null]
 }
+
+Table Attachments {
+  id serial [pk]
+  message_id integer [ref: > Messages.id]
+  file_url varchar [not null]
+  file_type varchar [not null]
+  uploaded_at datetime [not null]
+  created_at datetime [not null]
+  updated_at datetime [not null]
+}
 ```
