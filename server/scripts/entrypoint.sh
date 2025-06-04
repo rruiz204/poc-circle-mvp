@@ -11,7 +11,7 @@ bun run prisma:generate
 bun run prisma:seed
 
 # Running commands...
-bun run command:sync:rbac
+#bun run command:sync:rbac
 
 # Starting application...
 exec bun run prod

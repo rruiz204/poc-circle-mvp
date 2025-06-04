@@ -18,5 +18,5 @@ const SeedRunner = async (seeders: Seeder[]) => {
 };
 
 await SeedRunner([
-  adminSeeder, roleSeeder, scopeSeeder,
+  adminSeeder,
 ]);
