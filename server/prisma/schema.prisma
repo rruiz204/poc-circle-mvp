@@ -15,24 +15,24 @@ datasource db {
 }
 
 model User {
-  id           Int            @id @default(autoincrement())
-  name         String
-  email        String         @unique
-  password     String
-  active       Boolean        @default(true)
-  createdAt    DateTime       @default(now())
-  updatedAt    DateTime       @updatedAt
-  circleMember CircleMember[]
+  id            Int            @id @default(autoincrement())
+  name          String
+  email         String         @unique
+  password      String
+  active        Boolean        @default(true)
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  CircleMembers CircleMember[]
 }
 
 model Role {
-  id           Int            @id @default(autoincrement())
-  name         String         @unique
-  description  String
-  createdAt    DateTime       @default(now())
-  updatedAt    DateTime       @updatedAt
-  scopes       RoleScope[]
-  circleMember CircleMember[]
+  id            Int            @id @default(autoincrement())
+  name          String         @unique
+  description   String
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  RoleScopes    RoleScope[]
+  CircleMembers CircleMember[]
 }
 
 model Scope {
@@ -41,7 +41,7 @@ model Scope {
   description String
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
-  roles       RoleScope[]
+  RoleScopes  RoleScope[]
 }
 
 model RoleScope {
@@ -54,16 +54,15 @@ model RoleScope {
 }
 
 model Circle {
-  id           Int            @id @default(autoincrement())
-  name         String         @unique
-  description  String
-  createdAt    DateTime       @default(now())
-  updatedAt    DateTime       @updatedAt
-  circleMember CircleMember[]
+  id            Int            @id @default(autoincrement())
+  name          String         @unique
+  description   String
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  CircleMembers CircleMember[]
 }
 
 model CircleMember {
-  id        Int      @id @default(autoincrement())
   userId    Int
   roleId    Int
   circleId  Int

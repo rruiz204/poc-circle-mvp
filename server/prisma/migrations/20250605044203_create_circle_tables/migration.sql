@@ -11,14 +11,11 @@ CREATE TABLE "Circle" (
 
 -- CreateTable
 CREATE TABLE "CircleMember" (
-    "id" SERIAL NOT NULL,
     "userId" INTEGER NOT NULL,
     "roleId" INTEGER NOT NULL,
     "circleId" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" TIMESTAMP(3) NOT NULL,
-
-    CONSTRAINT "CircleMember_pkey" PRIMARY KEY ("id")
+    "updatedAt" TIMESTAMP(3) NOT NULL
 );
 
 -- CreateIndex
