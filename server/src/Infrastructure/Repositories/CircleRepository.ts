@@ -28,4 +28,12 @@ export class CircleRepository implements ICircleRepository {
   public async findByName(name: string): Promise<Circle.Nullable> {
     return await this.prisma.circle.findUnique({ where: { name } });
   };
+
+  public async addMember(userId: number, roleId: number, circleId: number): Promise<void> {
+    await this.prisma.member.create({ data: { userId, roleId, circleId } });
+  };
+
+  public async removeMember(userId: number, circleId: number): Promise<void> {
+    await this.prisma.member.deleteMany({ where: { userId, circleId } });
+  };
 };

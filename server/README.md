@@ -41,13 +41,14 @@ bun run dev
 
 ### Commands
 
-| Topic   | Command                      | Description                            |
-| ------- | ---------------------------- | -------------------------------------- |
-| Prisma  | `bun run prisma:seed`        | runs the seeders                       |
-| Prisma  | `bun run prisma:studio`      | opens prisma studio in your browser    |
-| Prisma  | `bun run prisma:generate`    | generates prisma client with typing    |
-| Prisma  | `bun run prisma:migrate`     | runs prisma migrations in the database |
-| Vitest  | `bun run test:unit:simple`   | runs unit tests in the terminal        |
-| Vitest  | `bun run test:unit:coverage` | runs unit test with coverage report    |
-| Express | `bun run dev`                | runs api in development mode           |
-| Express | `bun run prod`               | runs api in production mode            |
+| Topic    | Command                          | Description                                         |
+| -------- | -------------------------------- | --------------------------------------------------- |
+| Prisma   | `bun run prisma:seed`            | runs the seeders                                    |
+| Prisma   | `bun run prisma:studio`          | opens prisma studio in your browser                 |
+| Prisma   | `bun run prisma:generate`        | generates prisma client with typing                 |
+| Prisma   | `bun run prisma:migrate:dev`     | runs prisma migrations in the database in dev mode  |
+| Prisma   | `bun run prisma:migrate:prod`    | runs prisma migrations in the database in prod mode |
+| Vitest   | `bun run test:unit:simple`       | runs unit tests in the terminal                     |
+| Vitest   | `bun run test:unit:coverage`     | runs unit test with coverage report                 |
+| Express  | `bun run dev`                    | runs api in development mode                        |
+| Express  | `bun run prod`                   | runs api in production mode                         |
