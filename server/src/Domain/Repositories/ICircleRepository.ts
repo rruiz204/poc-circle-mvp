@@ -7,4 +7,6 @@ export interface ICircleRepository {
   update(id: number, params: Circle.UpdateParams): Promise<Circle.Entity>;
   findById(id: number): Promise<Circle.Nullable>;
   findByName(name: string): Promise<Circle.Nullable>;
+  addMember(userId: number, roleId: number, circleId: number): Promise<void>;
+  removeMember(userId: number, circleId: number): Promise<void>;
 };
