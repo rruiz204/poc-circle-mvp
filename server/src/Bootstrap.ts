@@ -4,6 +4,7 @@ import type { Express } from "express";
 
 import { PingRouter } from "@Routers/PingRouter";
 import { AuthRouter } from "@Routers/AuthRouter";
+import { CircleRouter } from "@Routers/CircleRouter";
 
 import { ExceptionMiddleware } from "@Middlewares/ExceptionMiddleware"
 
@@ -13,6 +14,7 @@ export class Bootstrap {
   public addRouters(): void {
     this.app.use("/api/ping", PingRouter);
     this.app.use("/api/auth", AuthRouter);
+    this.app.use("/api/circles", CircleRouter);
   };
 
   public addMiddlewares(): void {

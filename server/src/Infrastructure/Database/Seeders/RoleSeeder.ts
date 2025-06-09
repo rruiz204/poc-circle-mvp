@@ -30,4 +30,17 @@ export class RoleSeeder extends Seeder {
   };
 };
 
-const Roles: Role.CreateParams[] = [];
+const Roles: Role.CreateParams[] = [
+  {
+    name: Role.Enum.OWNER,
+    description: "User with full control over the circle, can manage members and settings."
+  },
+  {
+    name: Role.Enum.MODER,
+    description: "User with permissions to moderate and manage members, but without full control."
+  },
+  {
+    name: Role.Enum.MEMBER,
+    description: "Regular user, can participate in the circle but with limited permissions."
+  },
+];

@@ -40,16 +40,12 @@ describe("email login use case", () => {
 
   it("should throw NotFound", async () => {
     vi.spyOn(uow.user, "findByEmail").mockResolvedValue(null);
-
-    await expect(useCase.execute(command))
-      .rejects.toThrowError(LogicException.NotFound);
+    await expect(useCase.execute(command)).rejects.toThrowError(LogicException.NotFound);
   });
 
   it("should throw BadCredentials", async () => {
     vi.spyOn(uow.user, "findByEmail").mockResolvedValue(user1);
     vi.spyOn(BcryptService, "verify").mockResolvedValue(false);
-
-    await expect(useCase.execute(command))
-      .rejects.toThrowError(LogicException.BadCredentials);
+    await expect(useCase.execute(command)).rejects.toThrowError(LogicException.BadCredentials);
   });
 });

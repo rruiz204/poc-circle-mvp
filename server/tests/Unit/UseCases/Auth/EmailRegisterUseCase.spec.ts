@@ -44,8 +44,6 @@ describe("simple register use case", () => {
 
   it("should throw Redundancy", async () => {
     vi.spyOn(uow.user, "findByEmail").mockResolvedValue(user1);
-
-    await expect(useCase.execute(command))
-      .rejects.toThrowError(LogicException.Redundancy);
+    await expect(useCase.execute(command)).rejects.toThrowError(LogicException.Redundancy);
   });
 });
