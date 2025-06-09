@@ -1,4 +1,5 @@
 import type { Circle } from "@Models/Circle";
+import type { Member } from "@Models/Member";
 import { PrismaClient } from "generated/prisma";
 import type { ICircleRepository } from "@Repositories/ICircleRepository";
 
@@ -29,11 +30,11 @@ export class CircleRepository implements ICircleRepository {
     return await this.prisma.circle.findUnique({ where: { name } });
   };
 
-  public async addMember(userId: number, roleId: number, circleId: number): Promise<void> {
-    await this.prisma.member.create({ data: { userId, roleId, circleId } });
+  public async addMember(params: Member.UncheckedParams): Promise<void> {
+    await this.prisma.member.create({ data: params });
   };
 
-  public async removeMember(userId: number, circleId: number): Promise<void> {
-    await this.prisma.member.deleteMany({ where: { userId, circleId } });
+  public async removeMember(params: Member.DeleteParams): Promise<void> {
+    await this.prisma.member.deleteMany({ where: params });
   };
 };
