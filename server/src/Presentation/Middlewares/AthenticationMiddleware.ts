@@ -8,9 +8,10 @@ export const AuthenticationMiddleware = async (req: Request, res: Response, next
 
   try {
     const payload = await JwtService.verify(token);
-    req.user.id = payload.id;
+    req.user = { id: payload.id };
     next();
-  } catch {
+  } catch (err) {
+    console.log(err);
     throw new HttpException.Unauthorized("Bad token");
   };
 };
