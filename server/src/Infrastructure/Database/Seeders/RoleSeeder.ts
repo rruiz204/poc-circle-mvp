@@ -4,7 +4,7 @@ import { PrismaClient } from "generated/prisma";
 
 export class RoleSeeder extends Seeder {
   constructor(context: PrismaClient) {
-    super("role-seeder", context);
+    super(context);
   };
 
   public async seed(): Promise<void> {

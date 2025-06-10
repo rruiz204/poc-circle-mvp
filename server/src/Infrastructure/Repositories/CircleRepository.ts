@@ -6,8 +6,8 @@ import type { ICircleRepository } from "@Repositories/ICircleRepository";
 export class CircleRepository implements ICircleRepository {
   constructor(private prisma: PrismaClient) {};
 
-  public async list(): Promise<Circle.Records> {
-    return await this.prisma.circle.findMany();
+  public async list(params: Circle.WhereParams): Promise<Circle.Records> {
+    return await this.prisma.circle.findMany({ where: params });
   };
 
   public async delete(id: number): Promise<Circle.Entity> {

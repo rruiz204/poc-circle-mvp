@@ -5,7 +5,7 @@ import { BcryptService } from "@Services/Password/BcryptService";
 
 export class AdminSeeder extends Seeder {
   constructor(context: PrismaClient) {
-    super("admin-seeder", context);
+    super(context);
   };
 
   public async seed(): Promise<void> {

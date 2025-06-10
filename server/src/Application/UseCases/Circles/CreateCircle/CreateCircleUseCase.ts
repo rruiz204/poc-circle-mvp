@@ -14,21 +14,21 @@ export class CreateCircleUseCase implements UseCase<CreateCircleCommand, CircleD
   public async execute(command: CreateCircleCommand): Promise<CircleDTO> {
     const validated = await CreateCircleSchema.validate(command);
 
-    const redundancy = await this.uow.circle.findByName(validated.name);
-    if (redundancy) throw new LogicException.Redundancy("Circle already exists");
+    const existing = await this.uow.circle.findByName(validated.name);
+    if (existing) throw new LogicException.Redundancy("Circle already exists");
 
-    const role = await this.uow.role.findByName("owner");
-    if (!role) throw new LogicException.NotFound("Role 'owner' not found");
+    const ownerRole = await this.uow.role.findByName("owner");
+    if (!ownerRole) throw new LogicException.NotFound("Role 'owner' not found");
 
-    const created = await this.uow.circle.create({
+    const circle = await this.uow.circle.create({
       name: validated.name, description: validated.description,
-      members: { create: { roleId: role.id, userId: command.onwer } },
+      members: { create: { roleId: ownerRole.id, userId: command.onwer } },
     });
 
     return {
-      id: created.id,
-      name: created.name,
-      description: created.description,
+      id: circle.id,
+      name: circle.name,
+      description: circle.description,
     };
   };
 };

@@ -4,7 +4,7 @@ import { PrismaClient } from "generated/prisma";
 
 export class ScopeSeeder extends Seeder {
   constructor(context: PrismaClient) {
-    super("scope-seeder", context);
+    super(context);
   };
 
   public async seed(): Promise<void> {

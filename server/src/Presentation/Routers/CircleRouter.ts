@@ -8,4 +8,5 @@ const controller = Inversify.get(CircleController);
 export const CircleRouter = Router();
 CircleRouter.use(AuthenticationMiddleware);
 
+CircleRouter.get("/", controller.list);
 CircleRouter.post("/", controller.create);
