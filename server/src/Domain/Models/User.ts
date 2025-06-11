@@ -7,9 +7,7 @@ export namespace User {
   export type Nullable = Model | null;
   export type Optional = Partial<Model>;
 
+  export type WhereParams = Prisma.UserWhereInput;
   export type CreateParams = Prisma.UserCreateInput;
   export type UpdateParams = Prisma.UserUpdateInput;
-
-  export type WhereParams = Prisma.UserWhereInput;
-  export type OrderParams = Prisma.UserOrderByWithRelationInput;
 };

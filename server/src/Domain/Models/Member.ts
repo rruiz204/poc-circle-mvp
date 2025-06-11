@@ -7,9 +7,9 @@ export namespace Member {
   export type Nullable = Model | null;
   export type Optional = Partial<Model>;
 
+  export type WhereParams = Prisma.MemberWhereInput;
   export type CreateParams = Prisma.MemberCreateInput;
   export type UpdateParams = Prisma.MemberUpdateInput;
-  export type WhereParams = Prisma.MemberWhereInput;
 
   export type UncheckedParams = Prisma.MemberUncheckedCreateInput;
   export type DeleteParams = Prisma.MemberUserIdCircleIdCompoundUniqueInput;

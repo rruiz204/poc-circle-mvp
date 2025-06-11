@@ -7,11 +7,9 @@ export namespace Scope {
   export type Nullable = Model | null;
   export type Optional = Partial<Model>;
 
+  export type WhereParams = Prisma.ScopeWhereInput;
   export type CreateParams = Prisma.ScopeCreateInput;
   export type UpdateParams = Prisma.ScopeUpdateInput;
-
-  export type WhereParams = Prisma.ScopeWhereInput;
-  export type OrderParams = Prisma.ScopeOrderByWithRelationInput;
 
   export enum Enum {};
 };
