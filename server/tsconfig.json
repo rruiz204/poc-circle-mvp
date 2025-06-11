@@ -52,6 +52,7 @@
 
       "@Security/*": ["src/Domain/Security/*"],
       "@Models/*": ["src/Domain/Models/*"],
+      "@Specs/*": ["src/Domain/Specs/*"],
     },
   },
   "include": [
