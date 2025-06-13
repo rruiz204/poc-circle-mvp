@@ -11,9 +11,7 @@ const scopeSeeder = new ScopeSeeder(Context);
 
 const SeedRunner = async (seeders: Seeder[]) => {
   for (const seeder of seeders) {
-    const name = seeder.getName();
     await seeder.seed();
-    console.log(`Seeder executed ${name}`);
   };
 };
 
