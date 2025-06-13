@@ -1,8 +1,7 @@
 import type { User } from "@Models/User";
 import { PrismaClient } from "generated/prisma";
-import type { IUserRepository } from "@Repositories/IUserRepository";
 
-export class UserRepository implements IUserRepository {
+export class UserRepository {
   constructor(private prisma: PrismaClient) {};
 
   public async list(): Promise<User.Records> {
