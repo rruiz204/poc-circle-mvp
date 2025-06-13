@@ -1,21 +1,21 @@
 import { inject, injectable } from "inversify";
 import type { Request, Response } from "express";
 
-import { ListCirclesUseCase } from "@UseCases/Circles/ListCircles/ListCirclesUseCase";
 import { CreateCircleUseCase } from "@UseCases/Circles/CreateCircle/CreateCircleUseCase";
+import { ListMyCirclesUseCase } from "@UseCases/Circles/ListMyCircles/ListMyCirclesUseCase";
 
 @injectable()
 export class CircleController {
   constructor(
-    @inject(ListCirclesUseCase) private readonly listCirclesUseCase: ListCirclesUseCase,
     @inject(CreateCircleUseCase) private readonly createCirleUseCase: CreateCircleUseCase,
+    @inject(ListMyCirclesUseCase) private readonly listMyCirclesUseCase: ListMyCirclesUseCase,
   ) {
     this.list = this.list.bind(this);
     this.create = this.create.bind(this);
   };
 
   public async list(req: Request, res: Response): Promise<void> {
-    const response = await this.listCirclesUseCase.execute({ user: req.user.id });
+    const response = await this.listMyCirclesUseCase.execute({ user: req.user.id });
     res.status(200).json(response);
   };
 

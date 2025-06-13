@@ -6,17 +6,12 @@ import { RoleRepository } from "@Repositories/RoleRepository";
 import { ScopeRepository } from "@Repositories/ScopeRepository";
 import { CircleRepository } from "@Repositories/CircleRepository";
 
-import type { IUserRepository } from "@Repositories/IUserRepository";
-import type { IRoleRepository } from "@Repositories/IRoleRepository";
-import type { IScopeRepository } from "@Repositories/IScopeRepository";
-import type { ICircleRepository } from "@Repositories/ICircleRepository";
-
 @injectable()
 export class UnitOfWork {
-  public user:IUserRepository;
-  public role: IRoleRepository;
-  public scope: IScopeRepository;
-  public circle: ICircleRepository;
+  public user: UserRepository;
+  public role: RoleRepository;
+  public scope: ScopeRepository;
+  public circle: CircleRepository;
 
   constructor(context: PrismaClient) {
     this.user = new UserRepository(context);

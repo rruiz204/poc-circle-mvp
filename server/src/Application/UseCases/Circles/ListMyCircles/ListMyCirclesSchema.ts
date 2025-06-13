@@ -1,5 +1,5 @@
 import * as yup from "yup";
 
-export const ListCirclesSchema = yup.object({
+export const ListMyCirclesSchema = yup.object({
   user: yup.number().positive().required(),
 });
