@@ -1,10 +1,4 @@
 import type { Circle } from "@Models/Circle";
-import type { Member } from "@Models/Member";
-
-interface Response extends Circle.Entity {
-  members: Member.WithUser[];
-};
-
 import type { UseCase } from "@UseCases/UseCase";
 import type { CircleDTO } from "@DTOs/CircleDTO";
 import type { ListMyCirclesQuery } from "./ListMyCirclesQuery";
@@ -21,8 +15,8 @@ export class ListMyCirclesUseCase implements UseCase<ListMyCirclesQuery, CircleD
   public async execute(query: ListMyCirclesQuery): Promise<CircleDTO[]> {
     const validated = await ListMyCirclesSchema.validate(query);
 
-    const spec = new MyCirclesSpec({ userId: validated.user });
-    const circles: Response[] = await this.uow.circle.list(spec);
+    const spec = new MyCirclesSpec({ user: validated.user });
+    const circles: Circle.WithMembers[] = await this.uow.circle.list(spec);
 
     return circles.map((c) => ({
       id: c.id,
