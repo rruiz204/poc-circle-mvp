@@ -1,42 +1,39 @@
 import type { Circle } from "@Models/Circle";
-import type { Member } from "@Models/Member";
 import { PrismaClient } from "generated/prisma";
-import type { ICircleRepository } from "@Repositories/ICircleRepository";
 
-export class CircleRepository implements ICircleRepository {
+export class CircleRepository {
   constructor(private prisma: PrismaClient) {};
 
-  public async list<Records>(spec: Circle.Spec): Promise<Records> {
+  public async list(spec: Circle.Spec): Promise<any> {
     return await this.prisma.circle.findMany({
-      where: spec.toQuery?.(), include: spec.toInclude?.(),
-    }) as Records;
+      where: spec.toWhere(), include: spec.toInclude(),
+    });
   };
 
-  public async delete(id: number): Promise<Circle.Entity> {
-    return await this.prisma.circle.delete({ where: { id } });
+  public async find(spec: Circle.Spec): Promise<any> {
+    return await this.prisma.circle.findFirst({
+      where: spec.toWhere(), include: spec.toInclude(),
+    });
   };
 
-  public async create(params: Circle.CreateParams): Promise<Circle.Entity> {
-    return await this.prisma.circle.create({ data: params });
+  public async delete(spec: Circle.Spec): Promise<any> {
+    return await this.prisma.circle.delete({
+      where: spec.toUnique(), include: spec.toInclude(),
+    });
   };
 
-  public async update(id: number, params: Circle.UpdateParams): Promise<Circle.Entity> {
-    return await this.prisma.circle.update({ data: params, where: { id } });
+  public async create(params: Circle.CreateParams, spec: Circle.Spec): Promise<any> {
+    return await this.prisma.circle.create({
+      data: params,
+      include: spec.toInclude(),
+    });
   };
 
-  public async findById(id: number): Promise<Circle.Nullable> {
-    return await this.prisma.circle.findUnique({ where: { id } });
-  };
-
-  public async findByName(name: string): Promise<Circle.Nullable> {
-    return await this.prisma.circle.findUnique({ where: { name } });
-  };
-
-  public async addMember(params: Member.UncheckedParams): Promise<void> {
-    await this.prisma.member.create({ data: params });
-  };
-
-  public async removeMember(params: Member.DeleteParams): Promise<void> {
-    await this.prisma.member.deleteMany({ where: params });
+  public async update(params: Circle.UpdateParams, spec: Circle.Spec): Promise<any> {
+    return await this.prisma.circle.update({
+      data: params,
+      where: spec.toUnique(),
+      include: spec.toInclude(),
+    });
   };
 };
