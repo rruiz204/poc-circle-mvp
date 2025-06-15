@@ -3,26 +3,29 @@ import type { UseCase } from "@UseCases/UseCase";
 import type { CreateCircleCommand } from "./CreateCircleCommand";
 
 import { inject, injectable } from "inversify";
-import { UnitOfWork } from "@Database/Common/UnitOfWork";
+import { PrismaClient } from "generated/prisma";
 import { CreateCircleSchema } from "./CreateCircleSchema";
 import { LogicException } from "@Exceptions/LogicException";
 
 @injectable()
 export class CreateCircleUseCase implements UseCase<CreateCircleCommand, CircleDTO> {
-  constructor(@inject(UnitOfWork) private readonly uow: UnitOfWork) {};
+  constructor(@inject(PrismaClient) private readonly prisma: PrismaClient) {};
 
   public async execute(command: CreateCircleCommand): Promise<CircleDTO> {
     const validated = await CreateCircleSchema.validate(command);
 
-    const existing = await this.uow.circle.findByName(validated.name);
-    if (existing) throw new LogicException.Redundancy("Circle already exists");
+    const existing = await this.prisma.circle.findUnique({ where: { name: validated.name } });
+    if (existing) throw new LogicException.Redundancy("Circle already exists!");
 
-    const ownerRole = await this.uow.role.findByName("owner");
-    if (!ownerRole) throw new LogicException.NotFound("Role 'owner' not found");
+    const role = await this.prisma.role.findUnique({ where: { name: "owner" } });
+    if (!role) throw new LogicException.NotFound("Role 'onwer' not found");
 
-    const circle = await this.uow.circle.create({
-      name: validated.name, description: validated.description,
-      members: { create: { roleId: ownerRole.id, userId: command.onwer } },
+    const circle = await this.prisma.circle.create({
+      data: {
+        name: validated.name,
+        description: validated.description,
+        members: { create: { roleId: role.id, userId: command.onwer } },
+      },
     });
 
     return {
