@@ -3,8 +3,8 @@ import { Role } from "@Models/Role";
 import { PrismaClient } from "generated/prisma";
 
 export class RoleSeeder extends Seeder {
-  constructor(context: PrismaClient) {
-    super(context);
+  constructor(prisma: PrismaClient) {
+    super(prisma);
   };
 
   public async seed(): Promise<void> {
@@ -14,7 +14,7 @@ export class RoleSeeder extends Seeder {
 
   private async upsert(roles: Role.CreateParams[]): Promise<void> {
     for (const role of roles) {
-      await this.context.role.upsert({
+      await this.prisma.role.upsert({
         where: { name: role.name },
         update: { description: role.description },
         create: { name: role.name, description: role.description },
@@ -24,7 +24,7 @@ export class RoleSeeder extends Seeder {
 
   private async remove(roles: Role.CreateParams[]): Promise<void> {
     const names = roles.map(role => role.name);
-    await this.context.role.deleteMany({
+    await this.prisma.role.deleteMany({
       where: { name: { notIn: names } }
     });
   };

@@ -3,8 +3,8 @@ import { Scope } from "@Models/Scope";
 import { PrismaClient } from "generated/prisma";
 
 export class ScopeSeeder extends Seeder {
-  constructor(context: PrismaClient) {
-    super(context);
+  constructor(prisma: PrismaClient) {
+    super(prisma);
   };
 
   public async seed(): Promise<void> {
@@ -14,7 +14,7 @@ export class ScopeSeeder extends Seeder {
 
   private async upsert(scopes: Scope.CreateParams[]): Promise<void> {
     for (const scope of scopes) {
-      await this.context.scope.upsert({
+      await this.prisma.scope.upsert({
         where: { name: scope.name },
         update: { description: scope.description },
         create: { name: scope.name, description: scope.description },
@@ -24,7 +24,7 @@ export class ScopeSeeder extends Seeder {
 
   private async remove(scopes: Scope.CreateParams[]): Promise<void> {
     const names = scopes.map(scope => scope.name);
-    await this.context.scope.deleteMany({
+    await this.prisma.scope.deleteMany({
       where: { name: { notIn: names } }
     });
   };
