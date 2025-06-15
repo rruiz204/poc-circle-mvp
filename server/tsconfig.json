@@ -28,7 +28,6 @@
     
     "baseUrl": ".",
     "paths": {
-      "@Repositories/*": ["src/Infrastructure/Repositories/*"],
       "@Containers/*": ["src/Infrastructure/Containers/*"],
       "@Database/*": ["src/Infrastructure/Database/*"],
       "@Services/*": ["src/Infrastructure/Services/*"],
