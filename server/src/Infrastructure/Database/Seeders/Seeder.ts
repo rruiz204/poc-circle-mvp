@@ -1,6 +1,6 @@
 import { PrismaClient } from "generated/prisma";
 
 export abstract class Seeder {
-  constructor(protected context: PrismaClient) {};
+  constructor(protected prisma: PrismaClient) {};
   abstract seed(): Promise<void>;
 };
