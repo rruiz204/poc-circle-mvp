@@ -2,8 +2,10 @@ import type { CircleDTO } from "@DTOs/CircleDTO";
 import type { UseCase } from "@UseCases/UseCase";
 import type { CreateCircleCommand } from "./CreateCircleCommand";
 
+import { Circle } from "@Models/Circle";
 import { inject, injectable } from "inversify";
 import { PrismaClient } from "generated/prisma";
+
 import { CreateCircleSchema } from "./CreateCircleSchema";
 import { LogicException } from "@Exceptions/LogicException";
 
@@ -26,12 +28,18 @@ export class CreateCircleUseCase implements UseCase<CreateCircleCommand, CircleD
         description: validated.description,
         members: { create: { roleId: role.id, userId: command.onwer } },
       },
+      include: Circle.WithMembers,
     });
 
     return {
       id: circle.id,
       name: circle.name,
       description: circle.description,
+      members: circle.members.map((m) => ({
+        id: m.user.id,
+        name: m.user.name,
+        email: m.user.email,
+      })),
     };
   };
 };
