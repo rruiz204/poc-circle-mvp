@@ -15,7 +15,7 @@ export class CircleController {
   };
 
   public async list(req: Request, res: Response): Promise<void> {
-    const response = await this.listMyCirclesUseCase.execute({ user: req.user.id });
+    const response = await this.listMyCirclesUseCase.execute({ userId: req.user.id });
     res.status(200).json(response);
   };
 

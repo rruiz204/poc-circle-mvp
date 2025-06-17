@@ -1,29 +1,17 @@
-import { Circle } from "@Models/Circle";
+import type { Circle } from "@Models/Circle";
 
 interface Arguments {
-  user: number;
+  userId: number;
 };
 
-export class MyCirclesSpec extends Circle.Spec {
-  constructor(private readonly args: Arguments) { super() };
+export class MyCirclesSpec implements Circle.Spec {
+  constructor(private readonly args: Arguments) {};
 
   public toWhere(): Circle.WhereParams {
     return {
       members: {
-        some: {
-          userId: {
-            equals: this.args.user
-          },
-        },
-      },
-    };
-  };
-
-  public toInclude(): Circle.IncludeParams {
-    return {
-      members: {
-        include: {
-          user: true,
+        every: {
+          userId: this.args.userId
         },
       },
     };
