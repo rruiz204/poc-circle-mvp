@@ -28,8 +28,11 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 .cache
 *.tsbuildinfo
 
-# IntelliJ based IDEs
+# intelliJ based IDEs
 .idea
 
-# Finder (MacOS) folder config
-.DS_Store
+# finder (MacOS) folder config
+.DS_Stor
+
+# prisma
+/generated/prisma

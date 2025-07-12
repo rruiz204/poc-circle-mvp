@@ -12,6 +12,8 @@
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "noEmit": true,
 
     // Best practices
@@ -28,8 +30,15 @@
     // Imports paths
     "baseUrl": ".",
     "paths": {
+      "@Repositories/*": ["src/Infrastructure/Repositories/*"],
+      "@Database/*": ["src/Infrastructure/Database/*"],
       "@Configs/*": ["src/Infrastructure/Configs/*"],
+
+      "@UseCases/*": ["src/Application/UseCases/*"],
+      "@DTOs/*": ["src/Application/DTOs/*"],
+      
       "@Routers/*": ["src/Presentation/Routers/*"],
+      "@Models/*": ["src/Enterprise/Models/*"],
     },
   },
 }
