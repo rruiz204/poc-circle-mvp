@@ -17,10 +17,7 @@ export class AuthLoginUseCase implements UseCase<AuthLoginCommand, AuthDTO> {
   public async execute(command: AuthLoginCommand): Promise<AuthDTO> {
     const validated = await AuthLoginSchema.validate(command);
 
-    const existing = await this.prisma.user.findFirst({
-      where: { email: validated.email }
-    });
-
+    const existing = await this.prisma.user.findFirst({ where: { email: validated.email } });
     if (!existing) throw new LogicException.NotFound("User not found");
 
     const verified = await BcryptService.compare(validated.password, existing.password);

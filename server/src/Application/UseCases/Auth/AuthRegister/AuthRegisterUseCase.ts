@@ -17,13 +17,10 @@ export class AuthRegisterUseCase implements UseCase<AuthRegisterCommand, AuthDTO
   public async execute(command: AuthRegisterCommand): Promise<AuthDTO> {
     const validated = await AuthRegisterSchema.validate(command);
 
-    const existing = await this.prisma.user.findFirst({
-      where: { name: validated.name, email: validated.email }
-    });
-
+    const existing = await this.prisma.user.findFirst({ where: { name: validated.name, email: validated.email } });
     if (existing) throw new LogicException.Redundancy("User already exists");
-    const hashed = await BcryptService.hash(validated.password);
 
+    const hashed = await BcryptService.hash(validated.password);    
     const created = await this.prisma.user.create({
       data: { ...validated, password: hashed }
     });
